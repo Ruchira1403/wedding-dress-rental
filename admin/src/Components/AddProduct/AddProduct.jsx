@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './AddProduct.css'
 import upload_area from '../../assets/upload_area.svg'
+import { API_BASE_URL } from "../../config/api";
 
 const AddProduct = () => {
 
@@ -8,6 +9,7 @@ const AddProduct = () => {
   const [image,setImage] = useState(false);
   const [productDetails,setProductDetails] = useState({
     name:"",
+    description:"",
     image:"",
     category:"women",
     new_price:"",
@@ -30,7 +32,7 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append('product',image);
 
-    await fetch('http://localhost:4000/upload',{
+    await fetch(`${API_BASE_URL}/media/upload`,{
       method:'POST',
       headers:{
         Accept:'application/json',
@@ -42,7 +44,7 @@ const AddProduct = () => {
     {
       product.image = responseData.image_url;
       console.log(product);
-      await fetch('http://localhost:4000/addproduct',{
+      await fetch(`${API_BASE_URL}/products/addproduct`,{
         method:'POST',
         headers:{
           Accept:'application/json',
@@ -61,6 +63,16 @@ const AddProduct = () => {
         <div className="addproduct-item">
             <p>Product title</p>
             <input value={productDetails.name} onChange={changeHandler} type='text' name='name' placeholder='Type here'/>
+        </div>
+        <div className="addproduct-item">
+            <p>Product description</p>
+            <textarea
+              value={productDetails.description}
+              onChange={changeHandler}
+              name='description'
+              placeholder='Type product description here'
+              rows={4}
+            />
         </div>
       <div className="addproduct-price">
         <div className="addproduct-itemfield">

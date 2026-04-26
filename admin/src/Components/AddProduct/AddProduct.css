@@ -38,6 +38,18 @@
     font-family: 'Popins';
     font-size: 14px;
 }
+.addproduct-item textarea{
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    padding: 12px 15px;
+    border: 1px solid #c3c3c3;
+    outline: none;
+    color: #7b7b7b;
+    font-family: 'Popins';
+    font-size: 14px;
+    resize: vertical;
+}
 
 .addproduct-price{
     display: flex;

@@ -10,11 +10,14 @@ export const Product = () => {
   const { all_product } = useContext(ShopContext);
   const { productID } = useParams();
   const product = all_product.find((e) => e.id === Number(productID));
+  if (!product) {
+    return null;
+  }
   return (
     <div>
       <Breedcrum product={product} />
       <ProductDisplay product={product} />
-      <DescriptionBox />
+      <DescriptionBox description={product.description} />
       <RelatedProducts />
     </div>
   );

@@ -39,7 +39,7 @@ export const ProductDisplay = (props) => {
           </div>
         </div>
         <div className="productdisplay-right-description">
-          A lightweight,usually knitted,pullover shirt
+          {product.description || "No description available for this product yet."}
         </div>
         <div className="productdisplay-right-size">
           <h1>Select Size</h1>

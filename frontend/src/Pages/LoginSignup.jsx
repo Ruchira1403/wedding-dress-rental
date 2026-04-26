@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CSS/LoginSignup.css";
+import { API_BASE_URL } from "../config/api";
 
 export const LoginSignup = () => {
 
@@ -19,7 +20,7 @@ const login = async ()=>{
 
   
   let responseData;
-  await fetch('http://localhost:4000/login',{
+  await fetch(`${API_BASE_URL}/auth/login`,{
     method:'POST',
     headers:{
       Accept:'application/formData',
@@ -42,7 +43,7 @@ const signup = async ()=>{
   console.log("signup function executed",formData);
 
   let responseData;
-  await fetch('http://localhost:4000/signup',{
+  await fetch(`${API_BASE_URL}/auth/signup`,{
     method:'POST',
     headers:{
       Accept:'application/formData',
